@@ -1,4 +1,6 @@
 ﻿using Assessment_Sogeti.Data;
+using Assessment_Sogeti.Interfaces;
+using Assessment_Sogeti.Repository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +11,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddTransient<IOrderRepository, OrderRepository>();
 
 // Add SqlServer
 builder.Services.AddDbContext<DataContext>(options =>

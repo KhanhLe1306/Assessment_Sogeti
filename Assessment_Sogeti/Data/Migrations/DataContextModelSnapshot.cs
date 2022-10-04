@@ -17,13 +17,13 @@ namespace Assessment_Sogeti.Data.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.9");
 
-            modelBuilder.Entity("Assessment_Sogeti.Models.Order", b =>
+            modelBuilder.Entity("Assessment_Sogeti.Entities.Order", b =>
                 {
                     b.Property<int>("OrderId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("CreatedOn")
+                    b.Property<DateTime>("OrderedOn")
                         .HasColumnType("TEXT");
 
                     b.HasKey("OrderId");
@@ -31,13 +31,27 @@ namespace Assessment_Sogeti.Data.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("Assessment_Sogeti.Models.Product", b =>
+            modelBuilder.Entity("Assessment_Sogeti.Entities.OrderProduct", b =>
                 {
-                    b.Property<int>("ProductId")
+                    b.Property<int>("OrderProductId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("OrderId")
+                    b.Property<int>("OrderId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("OrderProductId");
+
+                    b.ToTable("OrderProducts");
+                });
+
+            modelBuilder.Entity("Assessment_Sogeti.Entities.Product", b =>
+                {
+                    b.Property<int>("ProductId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("ProductName")
@@ -46,21 +60,7 @@ namespace Assessment_Sogeti.Data.Migrations
 
                     b.HasKey("ProductId");
 
-                    b.HasIndex("OrderId");
-
                     b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("Assessment_Sogeti.Models.Product", b =>
-                {
-                    b.HasOne("Assessment_Sogeti.Models.Order", null)
-                        .WithMany("products")
-                        .HasForeignKey("OrderId");
-                });
-
-            modelBuilder.Entity("Assessment_Sogeti.Models.Order", b =>
-                {
-                    b.Navigation("products");
                 });
 #pragma warning restore 612, 618
         }

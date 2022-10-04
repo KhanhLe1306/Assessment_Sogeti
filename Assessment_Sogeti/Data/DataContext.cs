@@ -1,5 +1,5 @@
 ﻿using System;
-using Assessment_Sogeti.Models;
+using Assessment_Sogeti.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Assessment_Sogeti.Data
@@ -13,6 +13,7 @@ namespace Assessment_Sogeti.Data
         public virtual DbSet<Order> Orders { get; set; }
 
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<OrderProduct> OrderProducts { get; set; }  
     }
 }
 

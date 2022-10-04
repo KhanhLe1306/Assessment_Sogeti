@@ -1,5 +1,7 @@
 ﻿using System;
-namespace Assessment_Sogeti.Models
+using System.ComponentModel.DataAnnotations;
+
+namespace Assessment_Sogeti.Entities
 {
     public class Product
     {
@@ -7,6 +9,7 @@ namespace Assessment_Sogeti.Models
         {
         }
 
+        [Key]
         public int ProductId { get; set; }
 
         public string ProductName { get; set; }
